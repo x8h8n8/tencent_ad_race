@@ -9,34 +9,61 @@ import numpy as np
 
 
 class DataBuilder():
-    def __init__(self, sample_sum, ratio):
+    def __init__(self):
         self.train_path = "../preliminary_contest_data/train.csv"
+        self.test_path = "../preliminary_contest_data/train.csv"
         self.adFeature_path = "../preliminary_contest_data/adFeature.csv"
         self.userFeature_path = "../preliminary_contest_data/userFeature.data"
-        self.sample_sum = sample_sum
-        self.ratio = ratio
+        self.sample = 1000
 
-    def sampling_training_data(self):
+    def load_train_data(self):
         train_data = pd.read_csv(self.train_path, encoding='utf-8')
-        positive_train_sample = train_data[train_data['label'] == 1]
-        negative_train_sample = train_data[train_data['label'] == -1]
-        sample_positive_train_sample = positive_train_sample.sample(self.sample_sum * self.ratio)
-        sample_negative_train_sample = negative_train_sample.sample(self.sample_sum - self.sample_sum * self.ratio)
+        return train_data.sample(self.sample)
 
-        sample_train_data = sample_positive_train_sample.append(sample_negative_train_sample)
+    def load_test_data(self):
+        test_data = pd.read_csv(self.test_path, encoding='utf-8')
+        return test_data
 
-        return sample_train_data
+    def load_adFeature_data(self):
+        adFeature = pd.read_csv(self.adFeature_path, encoding='utf-8')
+        return adFeature
 
-    def construct_feature_sample_data(self):
-        sample_train_data = self.sampling_training_data()
-        # use adFeature.csv and userFeature.data to complete the input data of Models
-        feature_column_list = ['advertiserId', 'campaignId', 'creativeSize', 'adCategoryId',
-                               'productId', 'productType', 'age', 'gender', 'marriageStatus',
-                               'education', 'consumptionAbility', 'LBS', 'interest1', 'interest2',
-                               'interest3', 'interest4', 'interest5', 'kw1', 'kw2', 'kw3',
-                               'topic1', 'topic2', 'topic3', 'ct', 'os', 'carrier', 'house']
-        ad_feature = pd.read_csv(self.adFeature_path, encoding='utf-8')
-        for i in range(sample_train_data.shape[0]):
-            aid = sample_train_data['aid'][i]
-            uid = sample_train_data['uid'][i]
-            aid_feature = ad_feature[ad_feature['aid'] == aid].values.toList()
+    def load_userFeature_data(self):
+        userFeature = []
+        with open(self.userFeature_path, 'r') as f:
+            for line in f:
+                user_i = [0]*7
+                user_list = line.split('|')
+                for i in user_list:
+                    feature_i = i.split(' ')
+                    if feature_i[0] == "uid":
+                        user_i[0] = feature_i[1]
+                    elif feature_i[0] == "age":
+                        user_i[1] = feature_i[1]
+                    elif feature_i[0] == "gender":
+                        user_i[2] = feature_i[1]
+                    elif feature_i[0] == "marriageStatus":
+                        user_i[3] = feature_i[1]
+                    elif feature_i[0] == "education":
+                        user_i[4] = feature_i[1]
+                    elif feature_i[0] == "consumptionAbility":
+                        user_i[5] = feature_i[1]
+                    elif feature_i[0] == "LBS":
+                        user_i[6] = feature_i[1]
+                userFeature.append(user_i)
+                print(user_i)
+        userFeature = pd.DataFrame(np.array(userFeature), columns=["uid", "age", "gender", "marriageStatus", "education",
+                                                     "consumptionAbility", "LBS"])
+        return userFeature
+
+
+dataBuild = DataBuilder()
+adFeature = dataBuild.load_adFeature_data()
+train_data = dataBuild.load_train_data()
+userFeature = dataBuild.load_userFeature_data()
+
+data1 = pd.merge(train_data, adFeature, how='inner', on='aid')
+data2 = pd.merge(data1, userFeature, how='inner', on='uid')
+del data2['aid']
+del data2['uid']
+print(data2.head())
