@@ -37,19 +37,19 @@ class DataBuilder():
                 for i in user_list:
                     feature_i = i.split(' ')
                     if feature_i[0] == "uid":
-                        user_i[0] = feature_i[1]
+                        user_i[0] = int(feature_i[1])
                     elif feature_i[0] == "age":
-                        user_i[1] = feature_i[1]
+                        user_i[1] = int(feature_i[1])
                     elif feature_i[0] == "gender":
-                        user_i[2] = feature_i[1]
+                        user_i[2] = int(feature_i[1])
                     elif feature_i[0] == "marriageStatus":
-                        user_i[3] = feature_i[1]
+                        user_i[3] = int(feature_i[1])
                     elif feature_i[0] == "education":
-                        user_i[4] = feature_i[1]
+                        user_i[4] = int(feature_i[1])
                     elif feature_i[0] == "consumptionAbility":
-                        user_i[5] = feature_i[1]
+                        user_i[5] = int(feature_i[1])
                     elif feature_i[0] == "LBS":
-                        user_i[6] = feature_i[1]
+                        user_i[6] = int(feature_i[1])
                 userFeature.append(user_i)
                 print(user_i)
         userFeature = pd.DataFrame(np.array(userFeature), columns=["uid", "age", "gender", "marriageStatus", "education",
@@ -60,11 +60,10 @@ class DataBuilder():
 dataBuild = DataBuilder()
 adFeature = dataBuild.load_adFeature_data()
 train_data = dataBuild.load_train_data()
-# userFeature = dataBuild.load_userFeature_data()
+userFeature = dataBuild.load_userFeature_data()
 
 data1 = pd.merge(train_data, adFeature, how='inner', on='aid')
 del data1['aid']
-print(data1)
-# data2 = pd.merge(data1, userFeature, how='inner', on='uid')
-# del data2['uid']
-# print(data2.head())
+data2 = pd.merge(data1, userFeature, how='inner', on='uid')
+del data2['uid']
+print(data2.head())
