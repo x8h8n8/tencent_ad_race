@@ -60,12 +60,11 @@ class DataBuilder():
 dataBuild = DataBuilder()
 adFeature = dataBuild.load_adFeature_data()
 train_data = dataBuild.load_train_data()
-userFeature = dataBuild.load_userFeature_data()
-print(userFeature.head())
+# userFeature = dataBuild.load_userFeature_data()
 
 data1 = pd.merge(train_data, adFeature, how='inner', on='aid')
 del data1['aid']
 print(data1)
-data2 = pd.merge(data1, userFeature, how='inner', on='uid')
-del data2['uid']
-print(data2.head())
+# data2 = pd.merge(data1, userFeature, how='inner', on='uid')
+# del data2['uid']
+# print(data2.head())
