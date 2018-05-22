@@ -32,7 +32,8 @@ class DataBuilder():
         userFeature = []
         with open(self.userFeature_path, 'r') as f:
             for line in f:
-                user_i = [0, 0, 0, 0, 0, 0, 0, [], [], [], [], [], [], [], [], [], [], [], [], 0, 0]
+                # user_i = [0, 0, 0, 0, 0, 0, 0, [], [], [], [], [], [], [], [], [], [], [], [], 0, 0]
+                user_i = [0]*9
                 user_list = line.split('|')
                 for i in user_list:
                     feature_i = i.split(' ')
@@ -50,48 +51,53 @@ class DataBuilder():
                         user_i[5] = int(feature_i[1])
                     elif feature_i[0] == "LBS":
                         user_i[6] = int(feature_i[1])
-                    elif feature_i[0] == "interest1":
-                        user_i[7] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "interest2":
-                        user_i[8] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "interest3":
-                        user_i[9] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "interest4":
-                        user_i[10] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "interest5":
-                        user_i[11] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "kw1":
-                        user_i[12] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "kw2":
-                        user_i[13] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "kw3":
-                        user_i[14] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "topic1":
-                        user_i[15] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "topic2":
-                        user_i[16] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "topic3":
-                        user_i[17] = [int(feature_i[x]) for x in range(1, len(feature_i))]
-                    elif feature_i[0] == "ct":
-                        user_i[18] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "interest1":
+                    #     user_i[7] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "interest2":
+                    #     user_i[8] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "interest3":
+                    #     user_i[9] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "interest4":
+                    #     user_i[10] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "interest5":
+                    #     user_i[11] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "kw1":
+                    #     user_i[12] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "kw2":
+                    #     user_i[13] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "kw3":
+                    #     user_i[14] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "topic1":
+                    #     user_i[15] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "topic2":
+                    #     user_i[16] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "topic3":
+                    #     user_i[17] = [int(feature_i[x]) for x in range(1, len(feature_i))]
+                    # elif feature_i[0] == "ct":
+                    #     user_i[18] = [int(feature_i[x]) for x in range(1, len(feature_i))]
                     elif feature_i[0] == "os":
-                        user_i[19] = int(feature_i[1])
+                        user_i[7] = int(feature_i[1])
                     elif feature_i[0] == "carrier":
-                        user_i[20] = int(feature_i[1])
+                        user_i[8] = int(feature_i[1])
                 userFeature.append(user_i)
                 print(user_i)
         userFeature = pd.DataFrame(np.array(userFeature), columns=["uid", "age", "gender", "marriageStatus", "education",
-                                                     "consumptionAbility", "LBS"])
+                                                     "consumptionAbility", "LBS", "os", "carrier"])
         return userFeature
 
+    def combine_train_data(self):
+        adFeature = self.load_adFeature_data()
+        train_data = self.load_train_data()
+        userFeature = self.load_userFeature_data()
 
-dataBuild = DataBuilder()
-adFeature = dataBuild.load_adFeature_data()
-train_data = dataBuild.load_train_data()
-userFeature = dataBuild.load_userFeature_data()
+        data1 = pd.merge(train_data, adFeature, how='inner', on='aid')
+        del data1['aid']
+        data2 = pd.merge(data1, userFeature, how='inner', on='uid')
+        del data2['uid']
 
-data1 = pd.merge(train_data, adFeature, how='inner', on='aid')
-del data1['aid']
-data2 = pd.merge(data1, userFeature, how='inner', on='uid')
-del data2['uid']
-print(data2.head())
+        return data2
+
+
+data_builder = DataBuilder()
+train_data = data_builder.combine_train_data()
+print(train_data.head())

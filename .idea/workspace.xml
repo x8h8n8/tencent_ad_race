@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81fa8427-1896-4c6d-8eae-28af2d564908" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train_data_builder.py" afterPath="$PROJECT_DIR$/train_data_builder.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="user_feature_analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_feature_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="370">
+              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -39,10 +38,11 @@
       <file leaf-file-name="train_data_builder.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_data_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2249">
-              <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+            <state relative-caret-position="582">
+              <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="e#219#238#0" expanded="true" />
+                <element signature="e#1393#4122#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -122,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.train_data_builder">
+  <component name="RunManager" selected="Python.user_feature_analysis">
     <configuration name="data_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -199,9 +199,9 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.train_data_builder" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test_for_matrix_combine" />
-        <item index="2" class="java.lang.String" itemvalue="Python.user_feature_analysis" />
+        <item index="0" class="java.lang.String" itemvalue="Python.user_feature_analysis" />
+        <item index="1" class="java.lang.String" itemvalue="Python.train_data_builder" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test_for_matrix_combine" />
         <item index="3" class="java.lang.String" itemvalue="Python.data_analysis" />
       </list>
     </recent_temporary>
@@ -275,6 +275,7 @@
           <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
+            <element signature="e#1393#4122#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -303,6 +304,7 @@
           <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
+            <element signature="e#1393#4122#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -331,6 +333,7 @@
           <caret line="55" column="81" lean-forward="false" selection-start-line="55" selection-start-column="81" selection-end-line="55" selection-end-column="81" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
+            <element signature="e#1393#4122#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -359,6 +362,7 @@
           <caret line="41" column="78" lean-forward="false" selection-start-line="41" selection-start-column="78" selection-end-line="41" selection-end-column="78" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
+            <element signature="e#1393#4122#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -387,6 +391,7 @@
           <caret line="41" column="78" lean-forward="false" selection-start-line="41" selection-start-column="78" selection-end-line="41" selection-end-column="78" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
+            <element signature="e#1393#4122#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -401,21 +406,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_for_matrix_combine.py" />
     <entry file="file://$PROJECT_DIR$/user_feature_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        <state relative-caret-position="370">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_for_matrix_combine.py" />
     <entry file="file://$PROJECT_DIR$/train_data_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2249">
-          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        <state relative-caret-position="582">
+          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
+            <element signature="e#1393#4122#0" expanded="false" />
           </folding>
         </state>
       </provider>
