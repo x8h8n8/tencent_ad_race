@@ -38,8 +38,8 @@
       <file leaf-file-name="train_data_builder.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_data_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="592">
+              <caret line="101" column="46" lean-forward="true" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
               <folding>
                 <element signature="e#219#238#0" expanded="true" />
                 <element signature="e#1393#4122#0" expanded="false" />
@@ -417,8 +417,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train_data_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state relative-caret-position="592">
+          <caret line="101" column="46" lean-forward="true" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
           <folding>
             <element signature="e#219#238#0" expanded="true" />
             <element signature="e#1393#4122#0" expanded="false" />

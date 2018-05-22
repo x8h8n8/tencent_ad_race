@@ -100,4 +100,4 @@ class DataBuilder():
 
 data_builder = DataBuilder()
 train_data = data_builder.combine_train_data()
-print(train_data.head())
+train_data.to_csv('../preliminary_contest_data/train_data_sample.csv')
