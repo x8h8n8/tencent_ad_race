@@ -74,15 +74,15 @@ class DataBuilder():
                     elif feature_i[0] == "ct":
                         user_i[18] = [int(feature_i[x]) for x in range(1, len(feature_i))]
                     elif feature_i[0] == "os":
-                        user_i[7] = int(feature_i[1])
+                        user_i[19] = int(feature_i[1])
                     elif feature_i[0] == "carrier":
-                        user_i[8] = int(feature_i[1])
+                        user_i[20] = int(feature_i[1])
                 userFeature.append(user_i)
                 print(user_i)
         userFeature = pd.DataFrame(np.array(userFeature), columns=["uid","age","gender","marriageStatus","education",
-                                                     "consumptionAbility", "LBS","interest1","interest2","interest3",
-                                                     "interest4","interest5","kw1","kw2","kw3","topic1","topic2",
-                                                    "topic3","ct","os","carrier"])
+                                                                   "consumptionAbility", "LBS","interest1","interest2",
+                                                                   "interest3","interest4","interest5","kw1","kw2","kw3",
+                                                                   "topic1","topic2","topic3","ct","os","carrier"])
         return userFeature
 
     def combine_train_data(self):
