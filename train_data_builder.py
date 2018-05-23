@@ -32,7 +32,6 @@ class DataBuilder():
         with open(self.userFeature_path, 'r') as f:
             for line in f:
                 user_i = [0, 0, 0, 0, 0, 0, 0, [], [], [], [], [], [], [], [], [], [], [], [], 0, 0]
-                user_i = [0]*9
                 user_list = line.split('|')
                 for i in user_list:
                     feature_i = i.split(' ')
